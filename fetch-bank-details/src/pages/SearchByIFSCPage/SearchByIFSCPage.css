@@ -1,0 +1,27 @@
+.ifsc-input{
+    width: 400px;
+    padding: 10px;
+    margin-bottom:10px ;
+}
+.ifsc-submit{
+    width: 400px;
+    box-sizing: content-box;
+    padding: 10px;
+    margin: auto;
+    background-color: rgb(5, 133, 5);
+    color: white;
+    font-weight: 700;
+    font-size: large;
+    cursor: pointer;
+}
+
+@media screen and (max-width:600px) {
+    .ifsc-input{
+        width: 250px;
+        box-sizing: border-box;
+    }
+    .ifsc-submit{
+        width: 250px;
+        box-sizing: border-box;
+    }
+}
