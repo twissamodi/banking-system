@@ -1,0 +1,28 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    border: solid black 5px; 
+    padding: 15px;
+}
+.dropdown-submit{
+    width: 400px;
+    padding: 10px;
+    margin: auto;
+    background-color: rgb(5, 133, 5);
+    color: white;
+    font-weight: 700;
+    font-size: large;
+    cursor: pointer;
+}
+.homepage-content-container{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+@media screen and (max-width:600px) {
+    .dropdown-submit{
+        width: 250px;
+    }
+}
