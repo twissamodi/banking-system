@@ -19,8 +19,8 @@ function SearchByIFSCPage() {
         ...data.bankDetails[0],
         IFSC: IFSCValue,
       });
+      setIsButtonClicked(true);
     });
-    setIsButtonClicked(true);
   };
   return (
     <div className="homepage-content-container">
