@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import BankDetails from '../../components/BankDetails/BankDetails';
 import NavBar from '../../components/NavBar/NavBar';
 import './SearchByIFSCPage.css';
@@ -6,9 +7,21 @@ import makeRequest from '../../utils/makeRequest';
 import { getBankDetails } from '../../constants/apiEndpoints';
 
 function SearchByIFSCPage() {
+  const navigate = useNavigate();
   const [IFSCValue, setIFSCValue] = useState('Enter IFSC Code');
   const [isButtonClicked, setIsButtonClicked] = useState(false);
   const [bankDetails, setBankDetails] = useState({});
+
+  const handleError = (err) => {
+    switch (err.response?.status) {
+      case 404:
+        navigate('/not-found');
+        break;
+      default: navigate('/internal-server-error');
+        break;
+    }
+  };
+
   const handleIFSCChange = (event) => {
     setIFSCValue(event.target.value);
   };
@@ -17,10 +30,9 @@ function SearchByIFSCPage() {
     makeRequest(getBankDetails(IFSCValue)).then((data) => {
       setBankDetails({
         ...data.bankDetails[0],
-        IFSC: IFSCValue,
       });
       setIsButtonClicked(true);
-    });
+    }).catch((err) => handleError(err));
   };
   return (
     <div className="homepage-content-container">
