@@ -1,5 +1,6 @@
 /* eslint-disable no-nested-ternary */
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import BankDetails from '../../components/BankDetails/BankDetails';
 import Dropdown from '../../components/Dropdown/Dropdown';
 import NavBar from '../../components/NavBar/NavBar';
@@ -8,6 +9,7 @@ import makeRequest from '../../utils/makeRequest';
 import './HomePage.css';
 
 function HomePage() {
+  const navigate = useNavigate();
   const [selectedBank, setSelectedBank] = useState('none');
   const [selectedBranch, setSelectedBranch] = useState('none');
   const [isButtonClicked, setIsButtonClicked] = useState(false);
@@ -30,6 +32,16 @@ function HomePage() {
       });
     }
   }, [selectedBank]);
+
+  const handleError = (err) => {
+    switch (err.response?.status) {
+      case 404:
+        navigate('/not-found');
+        break;
+      default: navigate('/internal-server-error');
+        break;
+    }
+  };
   const handleBankChange = (event) => {
     setSelectedBank(event.target.value);
   };
@@ -51,7 +63,7 @@ function HomePage() {
         PHONE: receivedDetails.PHONE,
       });
       setIsButtonClicked(true);
-    });
+    }).catch((err) => handleError(err));
   };
   return (
     <div className="homepage-content-container">
