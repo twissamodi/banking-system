@@ -14,8 +14,12 @@ function ErrorPage({ statusCode, PageStatus }) {
 
   );
 }
+ErrorPage.defaultProps = {
+  statusCode: 0,
+  PageStatus: '',
+};
 ErrorPage.propTypes = {
-  statusCode: PropTypes.number.isRequired,
-  PageStatus: PropTypes.string.isRequired,
+  statusCode: PropTypes.number,
+  PageStatus: PropTypes.string,
 };
 export default ErrorPage;
