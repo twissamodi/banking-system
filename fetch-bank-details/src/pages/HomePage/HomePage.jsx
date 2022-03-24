@@ -68,13 +68,13 @@ function HomePage() {
   return (
     <div className="homepage-content-container">
       <NavBar />
-      {isButtonClicked ? <BankDetails details={bankDetails} /> : (
-        <div className="container">
-          <Dropdown action="Select bank" options={bankNames} onChange={handleBankChange} />
-          <Dropdown action="Select branch" options={branchNames} onChange={handleBranchChange} />
-          <button className="dropdown-submit" type="submit" onClick={handleClick}>Submit</button>
-        </div>
-      )}
+      <div className="container">
+        <Dropdown action="Select bank" options={bankNames} onChange={handleBankChange} />
+        <Dropdown action="Select branch" options={branchNames} onChange={handleBranchChange} />
+        <button className="dropdown-submit" type="submit" onClick={handleClick}>Submit</button>
+      </div>
+      {' '}
+      {isButtonClicked ? <BankDetails details={bankDetails} /> : React.Fragment}
     </div>
   );
 }
