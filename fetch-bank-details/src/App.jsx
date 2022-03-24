@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import ErrorPage from './pages/ErrorPage/ErrorPage';
 import HomePage from './pages/HomePage/HomePage';
 import SearchByIFSCPage from './pages/SearchByIFSCPage/SearchByIFSCPage';
-import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 
 function App() {
   return (
@@ -14,7 +14,9 @@ function App() {
             element={<HomePage />}
           />
           <Route path="search-by-ifsc" element={<SearchByIFSCPage />} />
-          <Route path="*" element={<NotFoundPage />} />
+          <Route path="/not-found" element={<ErrorPage statusCode={404} PageStatus="Page Not Found" />} />
+          <Route path="/internal-server-error" element={<ErrorPage statusCode={500} PageStatus="Internal Server Error" />} />
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
       </BrowserRouter>
     </div>
