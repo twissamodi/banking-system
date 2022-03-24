@@ -5,18 +5,14 @@ import './BankDetails.css';
 function BankDetails({ details }) {
   return (
     <div className="container details-container">
-      <p className="details">
-        <b>Bank Name:</b>
-        {details.BANK}
-      </p>
-      <p className="details">
-        <b>Branch Name:</b>
-        {details.BRANCH}
-      </p>
-      <p className="details">
-        <b>IFSC Code:</b>
-        {details.IFSC}
-      </p>
+      {Object.keys(details).map((key) => (
+        <p key={details[key]} className="details">
+          <b>{key}</b>
+          :
+          {details[key]}
+        </p>
+      ))}
+
     </div>
   );
 }
@@ -25,6 +21,12 @@ BankDetails.propTypes = {
     BANK: PropTypes.string.isRequired,
     BRANCH: PropTypes.string.isRequired,
     IFSC: PropTypes.string.isRequired,
+    ADDRESS: PropTypes.string.isRequired,
+    CITY1: PropTypes.string.isRequired,
+    CITY2: PropTypes.string.isRequired,
+    STATE: PropTypes.string.isRequired,
+    // STD_CODE: PropTypes.number.isRequired,
+    // PHONE: PropTypes.number.isRequired,
   }).isRequired,
 };
 export default BankDetails;
