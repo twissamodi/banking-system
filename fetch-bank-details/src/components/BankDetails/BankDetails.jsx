@@ -1,19 +1,21 @@
+/* eslint-disable react/no-array-index-key */
 import React from 'react';
 import PropTypes from 'prop-types';
 import './BankDetails.css';
 
 function BankDetails({ details }) {
   return (
-    <div className="container details-container">
-      {Object.keys(details).map((key) => (
-        <p key={details[key]} className="details">
-          <b>{key}</b>
-          :
-          {details[key]}
-        </p>
-      ))}
+    <table className="container details-container">
+      <tbody>
+        {Object.keys(details).map((key, index) => (
+          <tr key={index + 1}>
+            <td className="table-keys" key={index}><b>{key}</b></td>
+            <td className="table-values" key={index + 2}>{details[key]}</td>
+          </tr>
 
-    </div>
+        ))}
+      </tbody>
+    </table>
   );
 }
 BankDetails.propTypes = {
