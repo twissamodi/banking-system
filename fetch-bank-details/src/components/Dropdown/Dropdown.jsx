@@ -9,9 +9,9 @@ function Dropdown({
     <form className="dropdown-container">
       <select className="dropdown-select" defaultValue={action} onChange={onChange}>
         <option value={action} disabled>{action}</option>
-        {options.map((option) => (
+        {options.length ? options.map((option) => (
           <option key={option} value={option}>{option}</option>
-        ))}
+        )) : React.Fragment}
       </select>
     </form>
   );
