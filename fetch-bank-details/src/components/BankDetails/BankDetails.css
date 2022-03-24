@@ -1,4 +1,13 @@
 .details{
     margin: 8px;
+}
+.table-keys{
+  width: 150px;
+}
+.table-values{
+    width: 600px;
+}
 
+.details-container{
+    border: 5px solid black;
 }
