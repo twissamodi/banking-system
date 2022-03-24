@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable no-nested-ternary */
 import React, { useState, useEffect } from 'react';
 import BankDetails from '../../components/BankDetails/BankDetails';
@@ -10,13 +9,11 @@ import './HomePage.css';
 
 function HomePage() {
   const [selectedBank, setSelectedBank] = useState('none');
-  // eslint-disable-next-line no-unused-vars
   const [selectedBranch, setSelectedBranch] = useState('none');
   const [isButtonClicked, setIsButtonClicked] = useState(false);
   const [isBankInitialized, setIsBankInitialized] = useState(false);
   const [bankNames, setBankNames] = useState([]);
   const [branchNames, setBranchNames] = useState([]);
-  const [isBranchInitialized, setIsBranchInitialized] = useState(false);
   const [bankDetails, setBankDetails] = useState({});
   useEffect(() => {
     if (!isBankInitialized) {
@@ -30,7 +27,6 @@ function HomePage() {
     if (selectedBank !== 'none') {
       makeRequest(getBranchNames(selectedBank)).then((data) => {
         setBranchNames(data.bankBranches);
-        setIsBranchInitialized(true);
       });
     }
   }, [selectedBank]);
@@ -47,8 +43,8 @@ function HomePage() {
         BRANCH: selectedBranch,
         IFSC: data.ifsc,
       });
+      setIsButtonClicked(true);
     });
-    setIsButtonClicked(true);
   };
   return bankNames.length ? (
     <div className="homepage-content-container">
