@@ -46,22 +46,17 @@ function HomePage() {
       setIsButtonClicked(true);
     });
   };
-  return bankNames.length ? (
+  return (
     <div className="homepage-content-container">
       <NavBar />
       {isButtonClicked ? <BankDetails details={bankDetails} /> : (
         <div className="container">
           <Dropdown action="Select bank" options={bankNames} onChange={handleBankChange} />
-          {branchNames.length ? <Dropdown action="Select branch" options={branchNames} onChange={handleBranchChange} /> : <div />}
+          <Dropdown action="Select branch" options={branchNames} onChange={handleBranchChange} />
           <button className="dropdown-submit" type="submit" onClick={handleClick}>Submit</button>
         </div>
       )}
     </div>
-  )
-    : (
-      <div>
-        Loading
-      </div>
-    );
+  );
 }
 export default HomePage;
