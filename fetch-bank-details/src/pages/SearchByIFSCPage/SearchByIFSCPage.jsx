@@ -37,13 +37,11 @@ function SearchByIFSCPage() {
   return (
     <div className="homepage-content-container">
       <NavBar />
-      { isButtonClicked ? <BankDetails details={bankDetails} />
-        : (
-          <form className="container">
-            <input className="ifsc-input" type="text" placeholder={IFSCValue} onChange={handleIFSCChange} />
-            <button className="ifsc-submit" type="submit" onClick={handleClick}>Submit</button>
-          </form>
-        )}
+      <form className="container">
+        <input className="ifsc-input" type="text" placeholder={IFSCValue} onChange={handleIFSCChange} />
+        <button className="ifsc-submit" type="submit" onClick={handleClick}>Submit</button>
+      </form>
+      { isButtonClicked ? <BankDetails details={bankDetails} /> : React.Fragment}
     </div>
   );
 }
