@@ -28,7 +28,7 @@ function SearchByIFSCPage() {
       { isButtonClicked ? <BankDetails details={bankDetails} />
         : (
           <form className="container">
-            <input className="ifsc-input" type="text" placeholder={IFSCValue} onChange={handleIFSCChange} />
+            <input data-testid="ifsc-input-id" className="ifsc-input" type="text" placeholder={IFSCValue} onChange={handleIFSCChange} />
             <button className="ifsc-submit" type="submit" onClick={handleClick}>Submit</button>
           </form>
         )}

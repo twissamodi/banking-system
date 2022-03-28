@@ -1,20 +1,21 @@
-export const BACKEND_URL = 'http://localhost:3002/bankDetails';
+/* eslint-disable quotes */
+export const BACKEND_URL = "http://localhost:3002/bankDetails";
 export const getBankName = {
-  method: 'get',
-  url: '/getBankNames/',
+  method: "get",
+  url: "/getBankNames",
 };
 
 export const getBranchNames = (bankName) => ({
-  method: 'get',
+  method: "get",
   url: `/getBranches/${bankName}`,
 });
 
 export const getIFSCCode = (bankName, branchName) => ({
-  method: 'get',
+  method: "get",
   url: `/getIfsc/${bankName}/${branchName}`,
 });
 
 export const getBankDetails = (ifscCode) => ({
-  method: 'get',
+  method: "get",
   url: `/getBankDetails/${ifscCode}`,
 });

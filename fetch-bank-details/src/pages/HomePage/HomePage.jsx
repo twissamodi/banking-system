@@ -38,30 +38,32 @@ function HomePage() {
   };
   const handleClick = () => {
     makeRequest(getIFSCCode(selectedBank, selectedBranch)).then((data) => {
+      const receivedDetails = data.ifsc[0];
       setBankDetails({
-        BANK: selectedBank,
-        BRANCH: selectedBranch,
-        IFSC: data.ifsc,
+        BANK: receivedDetails.BANK,
+        BRANCH: receivedDetails.BRANCH,
+        IFSC: receivedDetails.IFSC,
+        ADDRESS: receivedDetails.ADDRESS,
+        CITY1: receivedDetails.CITY1,
+        CITY2: receivedDetails.CITY2,
+        STATE: receivedDetails.STATE,
+        STD_CODE: receivedDetails.STD_CODE,
+        PHONE: receivedDetails.PHONE,
       });
       setIsButtonClicked(true);
     });
   };
-  return bankNames.length ? (
+  return (
     <div className="homepage-content-container">
       <NavBar />
       {isButtonClicked ? <BankDetails details={bankDetails} /> : (
         <div className="container">
           <Dropdown action="Select bank" options={bankNames} onChange={handleBankChange} />
-          {branchNames.length ? <Dropdown action="Select branch" options={branchNames} onChange={handleBranchChange} /> : <div />}
+          <Dropdown action="Select branch" options={branchNames} onChange={handleBranchChange} />
           <button className="dropdown-submit" type="submit" onClick={handleClick}>Submit</button>
         </div>
       )}
     </div>
-  )
-    : (
-      <div>
-        Loading
-      </div>
-    );
+  );
 }
 export default HomePage;

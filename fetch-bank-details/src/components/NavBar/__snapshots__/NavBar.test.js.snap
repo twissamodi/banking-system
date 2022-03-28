@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavBar Should match snapshot 1`] = `
+<div>
+  <header
+    class="header-container"
+  >
+    <h1
+      class="title"
+    >
+      bankBazaar.com
+    </h1>
+    <nav
+      class="navbar-content"
+    >
+      <ul
+        class="header-navbar-list"
+      >
+        <li
+          class="navbar-list-items"
+        >
+          <a
+            class="navbar-link"
+            href="/"
+          >
+            Home
+          </a>
+          <span
+            class="navbar-links-separator"
+          >
+            |
+          </span>
+        </li>
+        <li
+          class="navbar-list-items"
+        >
+          <a
+            class="navbar-link"
+            href="/search-by-ifsc"
+          >
+            Get bank details
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+</div>
+`;
