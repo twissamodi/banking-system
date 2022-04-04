@@ -29,6 +29,7 @@ function HomePage() {
     if (selectedBank !== 'none') {
       makeRequest(getBranchNames(selectedBank)).then((data) => {
         setBranchNames(data.bankBranches);
+        setSelectedBranch(data.bankBranches[0]);// jugaaaad!
       });
     }
   }, [selectedBank]);
